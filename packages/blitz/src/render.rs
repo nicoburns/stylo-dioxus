@@ -484,6 +484,7 @@ impl ElementCx<'_> {
                 items,
                 repeating,
                 compat_mode,
+                ..
             } => self.draw_linear_gradient(scene, direction, items),
             GenericGradient::Radial {
                 shape,
@@ -491,12 +492,14 @@ impl ElementCx<'_> {
                 items,
                 repeating,
                 compat_mode,
+                ..
             } => self.draw_radial_gradient(scene, shape, position, items, *repeating),
             GenericGradient::Conic {
                 angle,
                 position,
                 items,
                 repeating,
+                ..
             } => self.draw_conic_gradient(scene, angle, position, items, *repeating),
         };
     }

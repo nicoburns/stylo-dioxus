@@ -15,6 +15,7 @@ use tao::{
 use muda::{AboutMetadata, Menu, MenuId, MenuItem, PredefinedMenuItem, Submenu};
 use style::media_queries::Device;
 use tao::event_loop::{EventLoopProxy, EventLoopWindowTarget};
+#[cfg(target_os = "windows")]
 use tao::platform::windows::WindowExtWindows;
 use vello::Scene;
 
@@ -204,11 +205,11 @@ impl<'a> View<'a> {
             }
 
             // !TODO - this may not be the right way to do this, but it's a start
-            #[cfg(target_os = "macos")]
-            {
-                menu_bar.init_for_nsapp();
-                build_menu().set_as_windows_menu_for_nsapp();
-            }
+            // #[cfg(target_os = "macos")]
+            // {
+            //     menu_bar.init_for_nsapp();
+            //     build_menu().set_as_windows_menu_for_nsapp();
+            // }
 
             let size: tao::dpi::PhysicalSize<u32> = window.inner_size();
             let mut viewport = Viewport::new((size.width, size.height));
