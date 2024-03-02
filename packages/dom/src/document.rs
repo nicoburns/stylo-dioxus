@@ -20,7 +20,7 @@ use style::{
     media_queries::{Device, MediaList},
     selector_parser::SnapshotMap,
     shared_lock::{SharedRwLock, StylesheetGuards},
-    stylesheets::{AllowImportRules, DocumentStyleSheet, Origin, Stylesheet},
+    stylesheets::{AllowImportRules, DocumentStyleSheet, Origin, Stylesheet, UrlExtraData},
     stylist::Stylist,
 };
 use taffy::{
@@ -58,9 +58,9 @@ impl Document {
         let nodes_to_id = HashMap::new();
 
         // Make sure we turn on servo features
-        servo_config::set_pref!(layout.flexbox.enabled, true);
-        servo_config::set_pref!(layout.legacy_layout, true);
-        servo_config::set_pref!(layout.columns.enabled, true);
+        style_config::set_bool("layout.flexbox.enabled", true);
+        style_config::set_bool("layout.legacy_layout", true);
+        style_config::set_bool("layout.columns.enabled", true);
 
         Self {
             guard,
@@ -252,7 +252,7 @@ impl Document {
 
         let data = Stylesheet::from_str(
             css,
-            servo_url::ServoUrl::from_url("data:text/css;charset=utf-8;base64,".parse().unwrap()),
+            UrlExtraData::from("data:text/css;charset=utf-8;base64,".parse().unwrap()),
             Origin::UserAgent,
             Arc::new(self.guard.wrap(MediaList::empty())),
             self.guard.clone(),

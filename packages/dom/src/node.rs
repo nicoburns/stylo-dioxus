@@ -4,7 +4,7 @@ use atomic_refcell::AtomicRefCell;
 use html5ever::{tendril::StrTendril, Attribute, LocalName, QualName};
 use markup5ever_rcdom::{Handle, NodeData};
 use selectors::matching::QuirksMode;
-use servo_url::ServoUrl;
+use style::stylesheets::UrlExtraData;
 use slab::Slab;
 use style::{
     data::ElementData,
@@ -158,7 +158,7 @@ impl Node {
                 return;
             };
 
-            let url = servo_url::ServoUrl::from_url(
+            let url = UrlExtraData::from_url(
                 "data:text/css;charset=utf-8;base64,".parse().unwrap(),
             );
 

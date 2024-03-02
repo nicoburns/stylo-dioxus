@@ -8,10 +8,8 @@ edition = "2021"
 [dependencies]
 slab = "0.4.9"
 style = { workspace = true, features = ["servo"] }
-style_traits = { workspace = true, features = ["servo"] }
 euclid = { version = "0.22", features = ["serde"] }
 selectors = { workspace = true }
-servo_url = { workspace = true }
 taffy = { workspace = true }
 tokio = { workspace = true, features = ["full"] }
 vello = { workspace = true }

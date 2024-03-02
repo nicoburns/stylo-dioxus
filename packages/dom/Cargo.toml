@@ -7,10 +7,8 @@ edition = "2021"
 
 [dependencies]
 style = { workspace = true, features = ["servo"] }
-style_traits = { workspace = true, features = ["servo"] }
 selectors = { workspace = true }
-servo_url = { workspace = true }
-servo_config = { workspace = true }
+style_config = { workspace = true }
 taffy = { workspace = true }
 slab = "0.4.9"
 app_units = "0.7.5"
